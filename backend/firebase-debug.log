@@ -1,0 +1,800 @@
+[debug] [2017-12-11T12:31:38.159Z] ----------------------------------------------------------------------
+[debug] [2017-12-11T12:31:38.175Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2017-12-11T12:31:38.175Z] CLI Version:   3.16.0
+[debug] [2017-12-11T12:31:38.175Z] Platform:      win32
+[debug] [2017-12-11T12:31:38.175Z] Node Version:  v8.1.3
+[debug] [2017-12-11T12:31:38.175Z] Time:          Mon Dec 11 2017 15:31:38 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:38.175Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-11T12:31:38.190Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-11T12:31:38.190Z] > authorizing via signed-in user
+[debug] [2017-12-11T12:31:38.190Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/secretsanta-2018  
+  
+ Mon Dec 11 2017 15:31:38 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:39.513Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:31:39.514Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/secretsanta-2018/tokens  
+  
+ Mon Dec 11 2017 15:31:39 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:40.536Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'secretsanta-2018'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2017-12-11T12:31:41.527Z] >>> HTTP REQUEST PUT https://secretsanta-2018.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }    
+  }
+}
+ 
+ Mon Dec 11 2017 15:31:41 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:42.294Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database secretsanta-2018 is valid
+[debug] [2017-12-11T12:31:42.309Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2017-12-11T12:31:42.309Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/secretsanta-2018?view=CONSUMER_VIEW  
+  
+ Mon Dec 11 2017 15:31:42 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:42.309Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/secretsanta-2018?view=CONSUMER_VIEW  
+  
+ Mon Dec 11 2017 15:31:42 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:43.742Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:31:43.773Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2017-12-11T12:31:43.773Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/secretsanta-2018  
+  
+ Mon Dec 11 2017 15:31:43 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:43.773Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/secretsanta-2018/apiKeys  
+  
+ Mon Dec 11 2017 15:31:43 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:31:45.069Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:31:45.132Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2017-12-11T12:33:56.805Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/secretsanta-2018/configs  
+  
+ Mon Dec 11 2017 15:33:56 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:33:58.028Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (61.76 KB) for uploading
+[debug] [2017-12-11T12:34:23.798Z] >>> HTTP REQUEST GET https://www.googleapis.com/storage/v1/b/staging.secretsanta-2018.appspot.com  
+  
+ Mon Dec 11 2017 15:34:23 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:24.157Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:34:24.157Z] >>> HTTP REQUEST POST https://www.googleapis.com/upload/storage/v1/b/staging.secretsanta-2018.appspot.com/o?uploadType=media&name=firebase-functions-source  
+ ReadStream {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 65536,
+     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+     length: 63246,
+     pipes: null,
+     pipesCount: 0,
+     flowing: null,
+     ended: true,
+     endEmitted: false,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: true,
+     readableListening: false,
+     resumeScheduled: false,
+     destroyed: false,
+     defaultEncoding: 'utf8',
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: true,
+  domain: null,
+  _events: { end: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  path: 'C:\\Users\\NERADO~1\\AppData\\Local\\Temp\\firebase-functions-13564siQIhwXd9x3M.zip',
+  fd: 5,
+  flags: 'r',
+  mode: 438,
+  start: undefined,
+  end: undefined,
+  autoClose: true,
+  pos: undefined,
+  bytesRead: 63246 } 
+ Mon Dec 11 2017 15:34:24 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:24.407Z] <<< HTTP RESPONSE 503
+[debug] [2017-12-11T12:34:24.407Z] <<< HTTP RESPONSE BODY <html>
+<head>
+<title>Доступ заблокирован</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="icon" href="http://net.open.ru/common/img/uploaded/intranet/img/favicon.ico" type="image/x-icon">
+
+
+
+<style>
+  #content {
+    border:3px solid#aaa;
+	border: 1px solid #285EA6;width: 95%; max-width: 770px; overflow: hidden; margin-left: 10px;
+    background-color:#fff;
+    margin:1.5em;
+    padding:1.5em;
+    font-family:Calibri,serif;
+
+  }
+  h1 {
+    font-size:1.2em;
+    font-weight:bold;
+    color:#00bce4;
+  }
+  h2 {
+   font-size:1.1em;
+   font-weight:normal;
+   color:#000;
+  }
+  hr {
+  border: none;
+  background-color: #285EA6;
+  color: #285EA6;
+  height: 1px;
+  }
+  
+  
+  
+.option {border-top: 1px dotted #999; padding-top: 6px; margin: 4px 5px 0px 80px;}
+.first-option {padding-top: 1px; margin: 4px 5px 0px 80px;}
+.second-option {border-top: 1px dotted #999; padding-top: 1px; margin: 4px 5px 0px -2px;}
+
+
+
+</style>
+</head>
+<body style="background-image:none">
+<div id="content">
+
+
+<table><tr>
+	<td><img src="http://net.open.ru/common/img/uploaded/intranet/img/logo/open_rus.jpg" width="335" height="88"></td>
+	<td>&nbsp&nbsp&nbsp </td>
+	<td><font color="#00bce4" size=5em><h1>Страница, которую вы хотели посетить, заблокирована.</font></td>
+	</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+	
+	</table>
+<hr>
+<font size=4em>
+<p><b>Адрес:</b> 64.233.164.95
+<p><b>Категория:</b> File Transfer </p>
+<p><b>Имя файла:</b> o </p>
+<p><b>Пользователь:</b> open.ru\neradovskiy_kl</p>
+
+
+<table class="second-option">
+			<tr>
+				<td>
+					<font size=4em><b>Опции:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				</td>
+			</tr>	
+			</table>
+
+			<table class="first-option">
+			<tr>
+				<td>
+					
+				</td>
+				<td>			
+					
+					<font size=4em> 
+					Нажмите <a href="mailto:ithelp@open.ru?subject=Заявка%20PaloAlto&Body=Заявка%20на%20предоставление%20доступа%20в%20Интернет.%0d%0a %0d%0aURL:%2064.233.164.95%0d%0aCategory:%20File Transfer%0d%0aFile%20Name:%20o%0d%0aUser%20Name:%20open.ru\neradovskiy_kl%0d%0aRule%20Name:%20PAN_BS">создать заявку</a> для отправки письма в Единую службу поддержки.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+				</td>
+				<tr>
+				</tr>
+			</tr>	
+			</table>
+			
+			<table class="option">
+			<tr>
+				<td>
+					
+						<input type="button" value="  Go Back  " onclick="history.back();" style="font-size: 1em">
+				</td>
+				<td>
+					<font size=4em>
+					<span>Нажмите <b>Go Back</b> для перехода на предыдущую страницу.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   &nbsp&nbsp&nbsp&nbsp&nbsp </span>
+				
+				</td>
+				</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			</tr>
+			</table>
+</font>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[debug] [2017-12-11T12:34:24.407Z] TypeError: Cannot create property 'error' on string '<html>
+<head>
+<title>Доступ заблокирован</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="icon" href="http://net.open.ru/common/img/uploaded/intranet/img/favicon.ico" type="image/x-icon">
+
+
+
+<style>
+  #content {
+    border:3px solid#aaa;
+	border: 1px solid #285EA6;width: 95%; max-width: 770px; overflow: hidden; margin-left: 10px;
+    background-color:#fff;
+    margin:1.5em;
+    padding:1.5em;
+    font-family:Calibri,serif;
+
+  }
+  h1 {
+    font-size:1.2em;
+    font-weight:bold;
+    color:#00bce4;
+  }
+  h2 {
+   font-size:1.1em;
+   font-weight:normal;
+   color:#000;
+  }
+  hr {
+  border: none;
+  background-color: #285EA6;
+  color: #285EA6;
+  height: 1px;
+  }
+  
+  
+  
+.option {border-top: 1px dotted #999; padding-top: 6px; margin: 4px 5px 0px 80px;}
+.first-option {padding-top: 1px; margin: 4px 5px 0px 80px;}
+.second-option {border-top: 1px dotted #999; padding-top: 1px; margin: 4px 5px 0px -2px;}
+
+
+
+</style>
+</head>
+<body style="background-image:none">
+<div id="content">
+
+
+<table><tr>
+	<td><img src="http://net.open.ru/common/img/uploaded/intranet/img/logo/open_rus.jpg" width="335" height="88"></td>
+	<td>&nbsp&nbsp&nbsp </td>
+	<td><font color="#00bce4" size=5em><h1>Страница, которую вы хотели посетить, заблокирована.</font></td>
+	</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+	
+	</table>
+<hr>
+<font size=4em>
+<p><b>Адрес:</b> 64.233.164.95
+<p><b>Категория:</b> File Transfer </p>
+<p><b>Имя файла:</b> o </p>
+<p><b>Пользователь:</b> open.ru\neradovskiy_kl</p>
+
+
+<table class="second-option">
+			<tr>
+				<td>
+					<font size=4em><b>Опции:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				</td>
+			</tr>	
+			</table>
+
+			<table class="first-option">
+			<tr>
+				<td>
+					
+				</td>
+				<td>			
+					
+					<font size=4em> 
+					Нажмите <a href="mailto:ithelp@open.ru?subject=Заявка%20PaloAlto&Body=Заявка%20на%20предоставление%20доступа%20в%20Интернет.%0d%0a %0d%0aURL:%2064.233.164.95%0d%0aCategory:%20File Transfer%0d%0aFile%20Name:%20o%0d%0aUser%20Name:%20open.ru\neradovskiy_kl%0d%0aRule%20Name:%20PAN_BS">создать заявку</a> для отправки письма в Единую службу поддержки.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+				</td>
+				<tr>
+				</tr>
+			</tr>	
+			</table>
+			
+			<table class="option">
+			<tr>
+				<td>
+					
+						<input type="button" value="  Go Back  " onclick="history.back();" style="font-size: 1em">
+				</td>
+				<td>
+					<font size=4em>
+					<span>Нажмите <b>Go Back</b> для перехода на предыдущую страницу.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   &nbsp&nbsp&nbsp&nbsp&nbsp </span>
+				
+				</td>
+				</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			</tr>
+			</table>
+</font>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'
+    at module.exports (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:11:16)
+    at Request._callback (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:45:25)
+    at Request.self.callback (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:186:22)
+    at emitTwo (events.js:125:13)
+    at Request.emit (events.js:213:7)
+    at Request.<anonymous> (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1163:10)
+    at emitOne (events.js:115:13)
+    at Request.emit (events.js:210:7)
+    at IncomingMessage.<anonymous> (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1085:12)
+    at Object.onceWrapper (events.js:314:30)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2017-12-11T12:34:33.566Z] ----------------------------------------------------------------------
+[debug] [2017-12-11T12:34:33.566Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2017-12-11T12:34:33.566Z] CLI Version:   3.16.0
+[debug] [2017-12-11T12:34:33.566Z] Platform:      win32
+[debug] [2017-12-11T12:34:33.566Z] Node Version:  v8.1.3
+[debug] [2017-12-11T12:34:33.566Z] Time:          Mon Dec 11 2017 15:34:33 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:33.566Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-11T12:34:33.586Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-11T12:34:33.586Z] > authorizing via signed-in user
+[debug] [2017-12-11T12:34:33.586Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/secretsanta-2018  
+  
+ Mon Dec 11 2017 15:34:33 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:34.449Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:34:34.464Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/secretsanta-2018/tokens  
+  
+ Mon Dec 11 2017 15:34:34 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:35.323Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'secretsanta-2018'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2017-12-11T12:34:36.313Z] >>> HTTP REQUEST PUT https://secretsanta-2018.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }    
+  }
+}
+ 
+ Mon Dec 11 2017 15:34:36 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:37.112Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database secretsanta-2018 is valid
+[debug] [2017-12-11T12:34:37.112Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2017-12-11T12:34:37.112Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/secretsanta-2018?view=CONSUMER_VIEW  
+  
+ Mon Dec 11 2017 15:34:37 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:37.112Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/secretsanta-2018?view=CONSUMER_VIEW  
+  
+ Mon Dec 11 2017 15:34:37 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:38.409Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:34:38.424Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2017-12-11T12:34:38.424Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/secretsanta-2018  
+  
+ Mon Dec 11 2017 15:34:38 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:38.440Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/secretsanta-2018/apiKeys  
+  
+ Mon Dec 11 2017 15:34:38 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:34:39.486Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:34:39.627Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2017-12-11T12:35:49.827Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/secretsanta-2018/configs  
+  
+ Mon Dec 11 2017 15:35:49 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:35:51.104Z] <<< HTTP RESPONSE 200
+[warn] !  Unable to delete temporary directory C:\Users\NERADO~1\AppData\Local\Temp\fbfn_13604dMRxpEbQ4Ji6. You may want to manually delete it to save disk space.
+[debug] [2017-12-11T12:36:15.193Z] Error: ENOTEMPTY: directory not empty, rmdir 'C:\Users\NERADO~1\AppData\Local\Temp\fbfn_13604dMRxpEbQ4Ji6\node_modules\firebase-admin\node_modules\nyc\node_modules\uglify-js\lib'
+[info] i  functions: packaged functions (61.76 KB) for uploading
+[debug] [2017-12-11T12:36:15.209Z] >>> HTTP REQUEST GET https://www.googleapis.com/storage/v1/b/staging.secretsanta-2018.appspot.com  
+  
+ Mon Dec 11 2017 15:36:15 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:36:15.614Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-11T12:36:15.614Z] >>> HTTP REQUEST POST https://www.googleapis.com/upload/storage/v1/b/staging.secretsanta-2018.appspot.com/o?uploadType=media&name=firebase-functions-source  
+ ReadStream {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 65536,
+     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+     length: 63246,
+     pipes: null,
+     pipesCount: 0,
+     flowing: null,
+     ended: true,
+     endEmitted: false,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: true,
+     readableListening: false,
+     resumeScheduled: false,
+     destroyed: false,
+     defaultEncoding: 'utf8',
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: true,
+  domain: null,
+  _events: { end: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  path: 'C:\\Users\\NERADO~1\\AppData\\Local\\Temp\\firebase-functions-13604ij88R3wZNUNW.zip',
+  fd: 5,
+  flags: 'r',
+  mode: 438,
+  start: undefined,
+  end: undefined,
+  autoClose: true,
+  pos: undefined,
+  bytesRead: 63246 } 
+ Mon Dec 11 2017 15:36:15 GMT+0300 (RTZ 2 (зима))
+[debug] [2017-12-11T12:36:15.849Z] <<< HTTP RESPONSE 503
+[debug] [2017-12-11T12:36:15.849Z] <<< HTTP RESPONSE BODY <html>
+<head>
+<title>Доступ заблокирован</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="icon" href="http://net.open.ru/common/img/uploaded/intranet/img/favicon.ico" type="image/x-icon">
+
+
+
+<style>
+  #content {
+    border:3px solid#aaa;
+	border: 1px solid #285EA6;width: 95%; max-width: 770px; overflow: hidden; margin-left: 10px;
+    background-color:#fff;
+    margin:1.5em;
+    padding:1.5em;
+    font-family:Calibri,serif;
+
+  }
+  h1 {
+    font-size:1.2em;
+    font-weight:bold;
+    color:#00bce4;
+  }
+  h2 {
+   font-size:1.1em;
+   font-weight:normal;
+   color:#000;
+  }
+  hr {
+  border: none;
+  background-color: #285EA6;
+  color: #285EA6;
+  height: 1px;
+  }
+  
+  
+  
+.option {border-top: 1px dotted #999; padding-top: 6px; margin: 4px 5px 0px 80px;}
+.first-option {padding-top: 1px; margin: 4px 5px 0px 80px;}
+.second-option {border-top: 1px dotted #999; padding-top: 1px; margin: 4px 5px 0px -2px;}
+
+
+
+</style>
+</head>
+<body style="background-image:none">
+<div id="content">
+
+
+<table><tr>
+	<td><img src="http://net.open.ru/common/img/uploaded/intranet/img/logo/open_rus.jpg" width="335" height="88"></td>
+	<td>&nbsp&nbsp&nbsp </td>
+	<td><font color="#00bce4" size=5em><h1>Страница, которую вы хотели посетить, заблокирована.</font></td>
+	</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+	
+	</table>
+<hr>
+<font size=4em>
+<p><b>Адрес:</b> 64.233.164.95
+<p><b>Категория:</b> File Transfer </p>
+<p><b>Имя файла:</b> o </p>
+<p><b>Пользователь:</b> open.ru\neradovskiy_kl</p>
+
+
+<table class="second-option">
+			<tr>
+				<td>
+					<font size=4em><b>Опции:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				</td>
+			</tr>	
+			</table>
+
+			<table class="first-option">
+			<tr>
+				<td>
+					
+				</td>
+				<td>			
+					
+					<font size=4em> 
+					Нажмите <a href="mailto:ithelp@open.ru?subject=Заявка%20PaloAlto&Body=Заявка%20на%20предоставление%20доступа%20в%20Интернет.%0d%0a %0d%0aURL:%2064.233.164.95%0d%0aCategory:%20File Transfer%0d%0aFile%20Name:%20o%0d%0aUser%20Name:%20open.ru\neradovskiy_kl%0d%0aRule%20Name:%20PAN_BS">создать заявку</a> для отправки письма в Единую службу поддержки.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+				</td>
+				<tr>
+				</tr>
+			</tr>	
+			</table>
+			
+			<table class="option">
+			<tr>
+				<td>
+					
+						<input type="button" value="  Go Back  " onclick="history.back();" style="font-size: 1em">
+				</td>
+				<td>
+					<font size=4em>
+					<span>Нажмите <b>Go Back</b> для перехода на предыдущую страницу.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   &nbsp&nbsp&nbsp&nbsp&nbsp </span>
+				
+				</td>
+				</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			</tr>
+			</table>
+</font>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[debug] [2017-12-11T12:36:15.865Z] TypeError: Cannot create property 'error' on string '<html>
+<head>
+<title>Доступ заблокирован</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="icon" href="http://net.open.ru/common/img/uploaded/intranet/img/favicon.ico" type="image/x-icon">
+
+
+
+<style>
+  #content {
+    border:3px solid#aaa;
+	border: 1px solid #285EA6;width: 95%; max-width: 770px; overflow: hidden; margin-left: 10px;
+    background-color:#fff;
+    margin:1.5em;
+    padding:1.5em;
+    font-family:Calibri,serif;
+
+  }
+  h1 {
+    font-size:1.2em;
+    font-weight:bold;
+    color:#00bce4;
+  }
+  h2 {
+   font-size:1.1em;
+   font-weight:normal;
+   color:#000;
+  }
+  hr {
+  border: none;
+  background-color: #285EA6;
+  color: #285EA6;
+  height: 1px;
+  }
+  
+  
+  
+.option {border-top: 1px dotted #999; padding-top: 6px; margin: 4px 5px 0px 80px;}
+.first-option {padding-top: 1px; margin: 4px 5px 0px 80px;}
+.second-option {border-top: 1px dotted #999; padding-top: 1px; margin: 4px 5px 0px -2px;}
+
+
+
+</style>
+</head>
+<body style="background-image:none">
+<div id="content">
+
+
+<table><tr>
+	<td><img src="http://net.open.ru/common/img/uploaded/intranet/img/logo/open_rus.jpg" width="335" height="88"></td>
+	<td>&nbsp&nbsp&nbsp </td>
+	<td><font color="#00bce4" size=5em><h1>Страница, которую вы хотели посетить, заблокирована.</font></td>
+	</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+	
+	</table>
+<hr>
+<font size=4em>
+<p><b>Адрес:</b> 64.233.164.95
+<p><b>Категория:</b> File Transfer </p>
+<p><b>Имя файла:</b> o </p>
+<p><b>Пользователь:</b> open.ru\neradovskiy_kl</p>
+
+
+<table class="second-option">
+			<tr>
+				<td>
+					<font size=4em><b>Опции:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				</td>
+			</tr>	
+			</table>
+
+			<table class="first-option">
+			<tr>
+				<td>
+					
+				</td>
+				<td>			
+					
+					<font size=4em> 
+					Нажмите <a href="mailto:ithelp@open.ru?subject=Заявка%20PaloAlto&Body=Заявка%20на%20предоставление%20доступа%20в%20Интернет.%0d%0a %0d%0aURL:%2064.233.164.95%0d%0aCategory:%20File Transfer%0d%0aFile%20Name:%20o%0d%0aUser%20Name:%20open.ru\neradovskiy_kl%0d%0aRule%20Name:%20PAN_BS">создать заявку</a> для отправки письма в Единую службу поддержки.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+				</td>
+				<tr>
+				</tr>
+			</tr>	
+			</table>
+			
+			<table class="option">
+			<tr>
+				<td>
+					
+						<input type="button" value="  Go Back  " onclick="history.back();" style="font-size: 1em">
+				</td>
+				<td>
+					<font size=4em>
+					<span>Нажмите <b>Go Back</b> для перехода на предыдущую страницу.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   &nbsp&nbsp&nbsp&nbsp&nbsp </span>
+				
+				</td>
+				</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			</tr>
+			</table>
+</font>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'
+    at module.exports (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:11:16)
+    at Request._callback (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:45:25)
+    at Request.self.callback (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:186:22)
+    at emitTwo (events.js:125:13)
+    at Request.emit (events.js:213:7)
+    at Request.<anonymous> (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1163:10)
+    at emitOne (events.js:115:13)
+    at Request.emit (events.js:210:7)
+    at IncomingMessage.<anonymous> (C:\Users\neradovskiy_kl\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1085:12)
+    at Object.onceWrapper (events.js:314:30)
+[error] 
+[error] Error: An unexpected error has occurred.
