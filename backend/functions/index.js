@@ -18,8 +18,9 @@ exports.newUser = functions.auth.user().onCreate( event => {
 })
 
 
-exports.getSanta = admin.database().ref("/opsantas").on("child_added",(ds,prevKey) => {
-    var req = ds.val();
+exports.getSanta = functions.database.ref("/opsantas/{operKey}").onCreate(event => {
+    var req = event.data.val();
+    event.data.ref.remove();
     if(req.oper=='clear') return clearSantas();
     admin.database().ref("/users/").once('value',ds=> {
         let users  = values(ds.val()).filter(u => !u.isSanta);

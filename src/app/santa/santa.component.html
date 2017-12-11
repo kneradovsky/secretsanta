@@ -9,7 +9,8 @@
     <h4 class="card-header">Ты секретный Санта для:</h4>
     <div class="card-body">
       <h4 class="card-title">{{user.santa}}</h4>
-      <p class="card-text">
+      <p *ngIf="user.isSanta" class="card-text">
+        20 декабря ты подаришь подарок {{user.santa}} не дороже 1000 рублей
       </p>
     </div>
   </div>

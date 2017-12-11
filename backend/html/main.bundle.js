@@ -262,7 +262,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/santa/santa.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"authenticated\">\n  <div *ngIf=\"inLoadingState\" class=\"alert alert-primary\" role=\"alert\">\n      Загрузка....\n  </div>\n  <div *ngIf=\"onError\" class=\"alert alert-danger\">\n    {{error}}\n  </div>\n  <div *ngIf=\"!inLoadingState\" class=\"card\" style=\"width: 40rem;\">\n    <h4 class=\"card-header\">Ты секретный Санта для:</h4>\n    <div class=\"card-body\">\n      <h4 class=\"card-title\">{{user.santa}}</h4>\n      <p class=\"card-text\">\n      </p>\n    </div>\n  </div>\n  <br>\n  <button type=\"button\" (click)=\"Logout()\" class=\"btn btn-warning\">Выход</button>\n</div>\n"
+module.exports = "<div *ngIf=\"authenticated\">\n  <div *ngIf=\"inLoadingState\" class=\"alert alert-primary\" role=\"alert\">\n      Загрузка....\n  </div>\n  <div *ngIf=\"onError\" class=\"alert alert-danger\">\n    {{error}}\n  </div>\n  <div *ngIf=\"!inLoadingState\" class=\"card\" style=\"width: 40rem;\">\n    <h4 class=\"card-header\">Ты секретный Санта для:</h4>\n    <div class=\"card-body\">\n      <h4 class=\"card-title\">{{user.santa}}</h4>\n      <p *ngIf=\"user.isSanta\" class=\"card-text\">\n        20 декабря ты подаришь подарок {{user.santa}} не дороже 1000 рублей\n      </p>\n    </div>\n  </div>\n  <br>\n  <button type=\"button\" (click)=\"Logout()\" class=\"btn btn-warning\">Выход</button>\n</div>\n"
 
 /***/ }),
 
