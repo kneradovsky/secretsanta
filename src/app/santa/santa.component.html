@@ -1,3 +1,18 @@
-<p>
-  santa works!
-</p>
+<div *ngIf="authenticated">
+  <div *ngIf="inLoadingState" class="alert alert-primary" role="alert">
+      Загрузка....
+  </div>
+  <div *ngIf="onError" class="alert alert-danger">
+    {{error}}
+  </div>
+  <div *ngIf="!inLoadingState" class="card" style="width: 20rem;">
+    <div class="card-body">
+      <h4 class="card-title">Твой секретный Санта</h4>
+      <p class="card-text">
+        Санта :
+        {{user.santa}}
+      </p>
+    </div>
+  </div>
+  <button type="button" (click)="Logout()" class="btn btn-warning">Выход</button>
+</div>

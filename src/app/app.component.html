@@ -2,7 +2,8 @@
 <div style="text-align:center">
   <h1>
     Кто твой секретный Санта?<br>
-    Фаза 1: регистрация
+    Фаза {{phaseNum}}: {{phaseName}}
   </h1>
 </div>
-<app-auth></app-auth>
+<app-auth [phaseNum]="phaseNum"></app-auth>
+<app-santa [phaseNum]="phaseNum"></app-santa>

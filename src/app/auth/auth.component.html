@@ -1,4 +1,7 @@
 <div *ngIf="!authenticated" id="accordion" role="tablist">
+  <div *ngIf="error!=''" class="alert alert-danger">
+    {{error}}
+  </div>  
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
@@ -22,7 +25,7 @@
       </div>
     </div>
   </div>
-  <div class="card">
+  <div *ngIf="phaseNum==1" class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
         <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

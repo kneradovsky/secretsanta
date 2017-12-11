@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
@@ -11,8 +11,9 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  user : Observable<firebase.User>;
+  @Input() phaseNum : string;
 
+  user : Observable<firebase.User>;
   authenticated = false;
   inAuthState = false;
   error = '';
@@ -23,6 +24,7 @@ export class AuthComponent implements OnInit {
   constructor(public afAuth : AngularFireAuth, public afDb : AngularFireDatabase) { 
     this.user = this.afAuth.authState;
     var self = this;
+    
     this.user.subscribe(state => {
       self.authenticated = state!=null;
       self.inAuthState = false;
@@ -38,6 +40,7 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
   }
 
+
   Login() {
     this.inAuthState = true;
     this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password);
@@ -48,6 +51,7 @@ export class AuthComponent implements OnInit {
     const self = this;
     this.afAuth.auth.createUserWithEmailAndPassword(this.email,this.password).then(newuser => {
       self.afDb.database.ref(`/users/${newuser.uid}`).update({firstname: self.firstname, lastname: self.lastname});
-    })
+    }).catch(error=>{self.error = error;})
   }
+
  }
