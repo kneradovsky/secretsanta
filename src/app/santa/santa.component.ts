@@ -11,7 +11,7 @@ class User {
   lastname : string;
   santa : string;
   santauid: string;
-  hasSanta : boolean;
+  isSanta : boolean;
   email: string;
 }
 
@@ -39,6 +39,7 @@ export class SantaComponent implements OnInit {
         console.log(user);
         self.inLoadingState=false;
         self.user = user;
+        if(self.user.santa==null || self.user.santa=='') self.user.santa='не назначен';
       },self.errorHandler)
     },self.errorHandler)
   }

@@ -1,9 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Кто твой секретный Санта?<br>
-    Фаза {{phaseNum}}: {{phaseName}}
-  </h1>
+<div class="container">
+  <div class="row">
+    <div class=".col-8">
+      <div style="text-align:center">
+        <h1>
+          Кто твой секретный Санта?
+          <br> Фаза {{phaseNum}}: {{phaseName}}
+        </h1>
+      </div>
+      <app-auth [phaseNum]="phaseNum"></app-auth>
+      <app-santa [phaseNum]="phaseNum"></app-santa>
+    </div>
+  </div>
 </div>
-<app-auth [phaseNum]="phaseNum"></app-auth>
-<app-santa [phaseNum]="phaseNum"></app-santa>

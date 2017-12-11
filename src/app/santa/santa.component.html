@@ -5,14 +5,14 @@
   <div *ngIf="onError" class="alert alert-danger">
     {{error}}
   </div>
-  <div *ngIf="!inLoadingState" class="card" style="width: 20rem;">
+  <div *ngIf="!inLoadingState" class="card" style="width: 40rem;">
+    <h4 class="card-header">Ты секретный Санта для:</h4>
     <div class="card-body">
-      <h4 class="card-title">Твой секретный Санта</h4>
+      <h4 class="card-title">{{user.santa}}</h4>
       <p class="card-text">
-        Санта :
-        {{user.santa}}
       </p>
     </div>
   </div>
+  <br>
   <button type="button" (click)="Logout()" class="btn btn-warning">Выход</button>
 </div>
