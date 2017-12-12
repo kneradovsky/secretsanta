@@ -14,7 +14,7 @@ admin.initializeApp(functions.config().firebase);
 exports.newUser = functions.auth.user().onCreate( event => {
     const user = event.data;
     var db = admin.database();
-    db.ref(`/users/${user.uid}`).update({uid: user.uid, email: user.email, hasSanta : false});
+    return db.ref(`/users/${user.uid}`).update({uid: user.uid, email: user.email, hasSanta : false});
 })
 
 
