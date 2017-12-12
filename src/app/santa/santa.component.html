@@ -6,11 +6,12 @@
     {{error}}
   </div>
   <div *ngIf="!inLoadingState" class="card" style="width: 40rem;">
-    <h4 class="card-header">Ты секретный Санта для:</h4>
+    <h5 class="card-header">Ты секретный Санта для: {{user.santa}}</h5>
     <div class="card-body">
-      <h4 class="card-title">{{user.santa}}</h4>
+      <h4 class="card-title"></h4>
       <p *ngIf="user.isSanta" class="card-text">
-        20 декабря ты подаришь подарок {{user.santa}} не дороже 1000 рублей
+        Ты покупаешь подарок для {{user.santa}} примерно на 1000 руб<br>
+        20 декабря подарок подарят наш Санта - Сазонов Иван и снегурка!
       </p>
     </div>
   </div>

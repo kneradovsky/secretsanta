@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+import { errorHandler } from '@angular/platform-browser/src/browser';
 
 
 @Component({
@@ -32,8 +33,6 @@ export class AuthComponent implements OnInit {
     },error => {
       self.inAuthState = false;
       self.authenticated = false;
-      self.error = error;
-      console.log(error)
     })
   }
 
@@ -43,7 +42,8 @@ export class AuthComponent implements OnInit {
 
   Login() {
     this.inAuthState = true;
-    this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password);
+    var self = this;
+    this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password).catch(error => self.ErrorHander(error));
   }
 
   Register() {
@@ -51,7 +51,12 @@ export class AuthComponent implements OnInit {
     const self = this;
     this.afAuth.auth.createUserWithEmailAndPassword(this.email,this.password).then(newuser => {
       self.afDb.database.ref(`/users/${newuser.uid}`).update({firstname: self.firstname, lastname: self.lastname});
-    }).catch(error=>{self.error = error;})
+    }).catch(error => self.ErrorHander(error))
+  }
+
+  ErrorHander(error) {
+    this.error = error.message;
+    console.log(this.error)
   }
 
  }

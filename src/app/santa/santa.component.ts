@@ -40,8 +40,8 @@ export class SantaComponent implements OnInit {
         self.inLoadingState=false;
         self.user = user;
         if(self.user.santa==null || self.user.santa=='') self.user.santa='не назначен';
-      },self.errorHandler)
-    },self.errorHandler)
+      },error => self.errorHandler(error))
+    },error => self.errorHandler(error))
   }
 
   errorHandler(error) {

@@ -25,7 +25,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="phaseNum==1" class="card">
+  <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
         <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -35,6 +35,7 @@
     </div>
     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
+        <div *ngIf="phaseNum==1; else registrationClosed">
           <div class="form-group">
               <label>Имя:</label>
               <input type="required" class="form-control" [(ngModel)]="firstname" placeholder="Имя">
@@ -53,6 +54,8 @@
             </div>  
             <button (click)="Register()" class="btn btn-primary">Регистрация</button>
         </div>
+        </div>
+        <ng-template #registrationClosed><div class="alert alert-warning">Регистрация закрыта</div></ng-template>
     </div>
   </div>
 </div>
