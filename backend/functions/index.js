@@ -26,19 +26,19 @@ exports.getSanta = functions.database.ref("/opsantas/{operKey}").onCreate(event 
         let users  = values(ds.val()).filter(u => !u.isSanta);
         var updates={}
         for(i=0;i<users.length;i++) {
-            var pairIndex = (Math.random()*users.length) % users.length;
+            var pairIndex = Math.ceil(Math.random()*users.length) % users.length;
             for(j=0;j<users.length;j++) {
                 if(pairIndex>=users.length) pairIndex=0;
-                if(!users[pairIndex].isSanta && users[i].uid!=users[pairIndex].uid) {
-                    var moduser = users[pairIndex];
-                    moduser.isSanta = true;
-                    moduser.santa = `${users[i].firstname} ${users[i].lastname}`;
-                    updates[`/users/${moduser.uid}`]=moduser;
+                if(!users[pairIndex].isSanta && !users[i].hasSanta && users[i].uid!=users[pairIndex].uid) {
+                    users[pairIndex].isSanta = true;
+                    users[pairIndex].santa = `${users[i].firstname} ${users[i].lastname}`;
+                    users[i].hasSanta=true;
                     break;
                 }
                 pairIndex++;
             }
         }
+        for(i=0;i<users.length;i++) updates[`/users/${users[i].uid}`]=users[i];
 	    console.log(updates);
         return admin.database().ref().update(updates);
     })
@@ -52,6 +52,7 @@ function clearSantas() {
             var moduser = u;
             moduser.isSanta=false;
             moduser.santa='';
+            moduser.hasSanta=false;
             updates[`/users/${u.uid}`]=moduser;
         })
         return admin.database().ref().update(updates);
