@@ -14,7 +14,7 @@ admin.initializeApp(functions.config().firebase);
 exports.newUser = functions.auth.user().onCreate( event => {
     const user = event.data;
     var db = admin.database();
-    return db.ref(`/users/${user.uid}`).update({uid: user.uid, email: user.email, hasSanta : false});
+    return db.ref(`/users/${user.uid}`).update({uid: user.uid, email: user.email, isSanta : false});
 })
 
 
@@ -22,7 +22,7 @@ exports.getSanta = functions.database.ref("/opsantas/{operKey}").onCreate(event 
     var req = event.data.val();
     event.data.ref.remove();
     if(req.oper=='clear') return clearSantas();
-    admin.database().ref("/users/").once('value',ds=> {
+    return admin.database().ref("/users/").once('value',ds=> {
         let users  = values(ds.val()).filter(u => !u.isSanta);
         var updates={}
         for(i=0;i<users.length;i++) {
@@ -30,24 +30,31 @@ exports.getSanta = functions.database.ref("/opsantas/{operKey}").onCreate(event 
             for(j=0;j<users.length;j++) {
                 if(pairIndex>=users.length) pairIndex=0;
                 if(!users[pairIndex].isSanta && users[i].uid!=users[pairIndex].uid) {
-                    updates[`/users/${users[pairIndex].uid}`]={isSanta:true,santa:`${users[i].firstname} ${users[i].lastname}`}
+                    var moduser = users[pairIndex];
+                    moduser.isSanta = true;
+                    moduser.santa = `${users[i].firstname} ${users[i].lastname}`;
+                    updates[`/users/${moduser.uid}`]=moduser;
                     break;
                 }
                 pairIndex++;
             }
         }
-        admin.database().ref().update(updates);
+	    console.log(updates);
+        return admin.database().ref().update(updates);
     })
 });
 
 function clearSantas() {
     admin.database().ref("/users/").once('value',ds => {
         updates={};
-        let users = values(ds.val()).filter(u => u.isSanta)
+        let users = values(ds.val())
         users.forEach(u => {
-            updates[`/users/${u.uid}`]={isSanta:false,santa:''}
+            var moduser = u;
+            moduser.isSanta=false;
+            moduser.santa='';
+            updates[`/users/${u.uid}`]=moduser;
         })
-        admin.database().ref().update(updates);
+        return admin.database().ref().update(updates);
     })
 }
 

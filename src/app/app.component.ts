@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  phaseNum = 1;
-  phaseName = 'регистрация';
+  phaseNum = 2;
+  phaseName = 'Санты приготовились!!!';
 }

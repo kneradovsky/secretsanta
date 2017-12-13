@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\".col-8\">\n      <div style=\"text-align:center\">\n        <h1>\n          Кто твой секретный Санта?\n          <br> Фаза {{phaseNum}}: {{phaseName}}\n        </h1>\n      </div>\n      <app-auth [phaseNum]=\"phaseNum\"></app-auth>\n      <app-santa [phaseNum]=\"phaseNum\"></app-santa>\n    </div>\n  </div>\n</div>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\".col-8\">\r\n      <div style=\"text-align:center\">\r\n        <h1>\r\n          Кто твой секретный Санта?\r\n          <br> Фаза {{phaseNum}}: {{phaseName}}\r\n        </h1>\r\n      </div>\r\n      <app-auth [phaseNum]=\"phaseNum\"></app-auth>\r\n      <app-santa [phaseNum]=\"phaseNum\"></app-santa>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -57,8 +57,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.phaseNum = 1;
-        this.phaseName = 'регистрация';
+        this.phaseNum = 2;
+        this.phaseName = 'Санты приготовились!!!';
     }
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -161,7 +161,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/auth/auth.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!authenticated\" id=\"accordion\" role=\"tablist\">\n  <div *ngIf=\"error!=''\" class=\"alert alert-danger\">\n    {{error}}\n  </div>  \n  <div class=\"card\">\n    <div class=\"card-header\" role=\"tab\" id=\"headingOne\">\n      <h5 class=\"mb-0\">\n        <a data-toggle=\"collapse\" href=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\n          Вход\n        </a>\n      </h5>\n    </div>\n\n    <div id=\"collapseOne\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n          <div class=\"form-group\">\n            <label>Email: </label>\n            <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\n          </div>  \n          <div class=\"form-group\">\n              <label>Password:</label>\n              <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\n          </div>  \n          <button (click)=\"Login()\" class=\"btn btn-primary\">Login</button>\n      </div>\n    </div>\n  </div>\n  <div *ngIf=\"phaseNum==1\" class=\"card\">\n    <div class=\"card-header\" role=\"tab\" id=\"headingTwo\">\n      <h5 class=\"mb-0\">\n        <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\n          Регистрация\n        </a>\n      </h5>\n    </div>\n    <div id=\"collapseTwo\" class=\"collapse\" role=\"tabpanel\" aria-labelledby=\"headingTwo\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n          <div class=\"form-group\">\n              <label>Имя:</label>\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"firstname\" placeholder=\"Имя\">\n          </div>  \n          <div class=\"form-group\">\n              <label>Фамилия:</label>\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"lastname\" placeholder=\"Фамилия\">\n          </div>  \n          <div class=\"form-group\">\n              <label>Email: </label>\n              <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\n            </div>  \n            <div class=\"form-group\">\n                <label>Password:</label>\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\n            </div>  \n            <button (click)=\"Register()\" class=\"btn btn-primary\">Регистрация</button>\n        </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div *ngIf=\"!authenticated\" id=\"accordion\" role=\"tablist\">\r\n  <div *ngIf=\"error!=''\" class=\"alert alert-danger\">\r\n    {{error}}\r\n  </div>  \r\n  <div class=\"card\">\r\n    <div class=\"card-header\" role=\"tab\" id=\"headingOne\">\r\n      <h5 class=\"mb-0\">\r\n        <a data-toggle=\"collapse\" href=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\r\n          Вход\r\n        </a>\r\n      </h5>\r\n    </div>\r\n\r\n    <div id=\"collapseOne\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">\r\n      <div class=\"card-body\">\r\n          <div class=\"form-group\">\r\n            <label>Email: </label>\r\n            <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\r\n          </div>  \r\n          <div class=\"form-group\">\r\n              <label>Password:</label>\r\n              <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\r\n          </div>  \r\n          <button (click)=\"Login()\" class=\"btn btn-primary\">Login</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" role=\"tab\" id=\"headingTwo\">\r\n      <h5 class=\"mb-0\">\r\n        <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\r\n          Регистрация\r\n        </a>\r\n      </h5>\r\n    </div>\r\n    <div id=\"collapseTwo\" class=\"collapse\" role=\"tabpanel\" aria-labelledby=\"headingTwo\" data-parent=\"#accordion\">\r\n      <div class=\"card-body\">\r\n        <div *ngIf=\"phaseNum==1; else registrationClosed\">\r\n          <div class=\"form-group\">\r\n              <label>Имя:</label>\r\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"firstname\" placeholder=\"Имя\">\r\n          </div>  \r\n          <div class=\"form-group\">\r\n              <label>Фамилия:</label>\r\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"lastname\" placeholder=\"Фамилия\">\r\n          </div>  \r\n          <div class=\"form-group\">\r\n              <label>Email: </label>\r\n              <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\r\n            </div>  \r\n            <div class=\"form-group\">\r\n                <label>Password:</label>\r\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\r\n            </div>  \r\n            <button (click)=\"Register()\" class=\"btn btn-primary\">Регистрация</button>\r\n        </div>\r\n        </div>\r\n        <ng-template #registrationClosed><div class=\"alert alert-warning\">Регистрация закрыта</div></ng-template>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -205,22 +205,25 @@ var AuthComponent = (function () {
         }, function (error) {
             self.inAuthState = false;
             self.authenticated = false;
-            self.error = error;
-            console.log(error);
         });
     }
     AuthComponent.prototype.ngOnInit = function () {
     };
     AuthComponent.prototype.Login = function () {
         this.inAuthState = true;
-        this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password);
+        var self = this;
+        this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function (error) { return self.ErrorHander(error); });
     };
     AuthComponent.prototype.Register = function () {
         this.inAuthState = true;
         var self = this;
         this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password).then(function (newuser) {
             self.afDb.database.ref("/users/" + newuser.uid).update({ firstname: self.firstname, lastname: self.lastname });
-        }).catch(function (error) { self.error = error; });
+        }).catch(function (error) { return self.ErrorHander(error); });
+    };
+    AuthComponent.prototype.ErrorHander = function (error) {
+        this.error = error.message;
+        console.log(this.error);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Input */])(),
@@ -262,7 +265,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/santa/santa.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"authenticated\">\n  <div *ngIf=\"inLoadingState\" class=\"alert alert-primary\" role=\"alert\">\n      Загрузка....\n  </div>\n  <div *ngIf=\"onError\" class=\"alert alert-danger\">\n    {{error}}\n  </div>\n  <div *ngIf=\"!inLoadingState\" class=\"card\" style=\"width: 40rem;\">\n    <h4 class=\"card-header\">Ты секретный Санта для:</h4>\n    <div class=\"card-body\">\n      <h4 class=\"card-title\">{{user.santa}}</h4>\n      <p *ngIf=\"user.isSanta\" class=\"card-text\">\n        20 декабря ты подаришь подарок {{user.santa}} не дороже 1000 рублей\n      </p>\n    </div>\n  </div>\n  <br>\n  <button type=\"button\" (click)=\"Logout()\" class=\"btn btn-warning\">Выход</button>\n</div>\n"
+module.exports = "<div *ngIf=\"authenticated\">\r\n  <div *ngIf=\"inLoadingState\" class=\"alert alert-primary\" role=\"alert\">\r\n      Загрузка....\r\n  </div>\r\n  <div *ngIf=\"onError\" class=\"alert alert-danger\">\r\n    {{error}}\r\n  </div>\r\n  <div *ngIf=\"!inLoadingState\" class=\"card\" style=\"width: 40rem;\">\r\n    <h5 class=\"card-header\">Ты секретный Санта для: {{user.santa}}</h5>\r\n    <div class=\"card-body\">\r\n      <h4 class=\"card-title\"></h4>\r\n      <p *ngIf=\"user.isSanta\" class=\"card-text\">\r\n        Ты покупаешь подарок для {{user.santa}} примерно на 1000 руб<br>\r\n        20 декабря подарок подарят наш Санта - Сазонов Иван и снегурка!\r\n      </p>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <button type=\"button\" (click)=\"Logout()\" class=\"btn btn-warning\">Выход</button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -310,8 +313,8 @@ var SantaComponent = (function () {
                 self.user = user;
                 if (self.user.santa == null || self.user.santa == '')
                     self.user.santa = 'не назначен';
-            }, self.errorHandler);
-        }, self.errorHandler);
+            }, function (error) { return self.errorHandler(error); });
+        }, function (error) { return self.errorHandler(error); });
     }
     SantaComponent.prototype.errorHandler = function (error) {
         this.onError = true;
