@@ -57,8 +57,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.phaseNum = 2;
-        this.phaseName = 'Санты приготовились!!!';
+        this.phaseNum = 3;
+        this.phaseName = 'Санты вперед!!!';
     }
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
