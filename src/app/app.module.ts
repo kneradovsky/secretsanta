@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { SantaComponent } from './santa/santa.component';
+import { SongsComponent } from './songs/songs.component';
 
 
 export const firebaseConfig = {
@@ -25,7 +26,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     AuthComponent,
-    SantaComponent
+    SantaComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<div *ngIf="authenticated">
+  <div *ngIf="!inLoadingState">
+    <div class="form-group">
+      <label for="newSongInput">Что будем петь?</label>
+      <input type="text" class="form-control" placeholder="Название песни" [(ngModel)]="newSong">
+    </div>
+    <button (click)="addSong()" class="btn btn-success">Добавить</button>
+    <div *ngIf="error!=''" class="alert alert-danger">
+        {{error}}
+    </div>    
+    <table class="table table-striped">
+      <thead>
+        <th scope="col">Исполнитель</th>
+        <th scope="col">Песня</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let song of songs">
+          <td>{{song.performer}}</td>
+          <td>{{song.song}}</td>
+        </tr>
+      </tbody>      
+    </table>
+  </div>
+</div>
