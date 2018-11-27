@@ -43,3 +43,5 @@ Thumbs.db
 
 #log files
 backend/*.log
+
+serviceAccount.json

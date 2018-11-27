@@ -9,18 +9,23 @@ const functions = require('firebase-functions');
 // });
 
 const admin = require('firebase-admin');
-admin.initializeApp(functions.config().firebase);
+var serviceAccount = require("./serviceAccount.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://secretsanta-2018.firebaseio.com"
+});
 
 exports.newUser = functions.auth.user().onCreate( event => {
-    const user = event.data;
+    const user = event.val();
     var db = admin.database();
     return db.ref(`/users/${user.uid}`).update({uid: user.uid, email: user.email, isSanta : false});
 })
 
 
 exports.getSanta = functions.database.ref("/opsantas/{operKey}").onCreate(event => {
-    var req = event.data.val();
-    event.data.ref.remove();
+    var req = event.val();
+    event.ref.remove();
     if(req.oper=='clear') return clearSantas();
     return admin.database().ref("/users/").once('value',ds=> {
         let users  = values(ds.val()).filter(u => !u.isSanta);

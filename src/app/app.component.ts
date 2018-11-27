@@ -8,8 +8,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  phaseNum = 3;
-  phaseName = 'Санты вперед!!!';
+  phaseNum = 1;
+  phaseName = 'Регистрация';
 
   constructor(private afAuth : AngularFireAuth) {}
   

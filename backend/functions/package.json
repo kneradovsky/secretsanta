@@ -9,8 +9,8 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
-    "firebase-admin": "~5.4.2",
-    "firebase-functions": "^0.7.1",
+    "firebase-admin": "^6.2.0",
+    "firebase-functions": "^2.1.0",
     "object.values": "^1.0.4"
   },
   "private": true

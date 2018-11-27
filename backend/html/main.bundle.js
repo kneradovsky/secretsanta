@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\".col-8\">\r\n      <div style=\"text-align:center\">\r\n        <h1>\r\n          Кто твой секретный Санта?\r\n          <br> Фаза {{phaseNum}}: {{phaseName}}\r\n        </h1>\r\n      </div>\r\n      <app-auth [phaseNum]=\"phaseNum\"></app-auth>\r\n      <app-santa [phaseNum]=\"phaseNum\"></app-santa>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\".col-8\">\n      <div style=\"text-align:center\">\n        <h1>\n          Кто твой секретный Санта?\n          <br> Фаза {{phaseNum}}: {{phaseName}}\n        </h1>\n      </div>\n      <app-auth [phaseNum]=\"phaseNum\"></app-auth>\n      <app-santa [phaseNum]=\"phaseNum\"></app-santa>\n      <br>\n      <app-songs></app-songs>\n      <br>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\".col-8\">\n      <button type=\"button\" (click)=\"Logout()\" class=\"btn btn-warning\">Выход</button>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -48,24 +48,34 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__("../../../../angularfire2/auth/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = (function () {
-    function AppComponent() {
-        this.phaseNum = 3;
-        this.phaseName = 'Санты вперед!!!';
+    function AppComponent(afAuth) {
+        this.afAuth = afAuth;
+        this.phaseNum = 1;
+        this.phaseName = 'Регистрация';
     }
+    AppComponent.prototype.Logout = function () {
+        this.afAuth.auth.signOut();
+    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -89,12 +99,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth_auth_component__ = __webpack_require__("../../../../../src/app/auth/auth.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__santa_santa_component__ = __webpack_require__("../../../../../src/app/santa/santa.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__songs_songs_component__ = __webpack_require__("../../../../../src/app/songs/songs.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -120,7 +132,8 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__auth_auth_component__["a" /* AuthComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__santa_santa_component__["a" /* SantaComponent */]
+                __WEBPACK_IMPORTED_MODULE_8__santa_santa_component__["a" /* SantaComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__songs_songs_component__["a" /* SongsComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -161,7 +174,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/auth/auth.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!authenticated\" id=\"accordion\" role=\"tablist\">\r\n  <div *ngIf=\"error!=''\" class=\"alert alert-danger\">\r\n    {{error}}\r\n  </div>  \r\n  <div class=\"card\">\r\n    <div class=\"card-header\" role=\"tab\" id=\"headingOne\">\r\n      <h5 class=\"mb-0\">\r\n        <a data-toggle=\"collapse\" href=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\r\n          Вход\r\n        </a>\r\n      </h5>\r\n    </div>\r\n\r\n    <div id=\"collapseOne\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">\r\n      <div class=\"card-body\">\r\n          <div class=\"form-group\">\r\n            <label>Email: </label>\r\n            <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\r\n          </div>  \r\n          <div class=\"form-group\">\r\n              <label>Password:</label>\r\n              <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\r\n          </div>  \r\n          <button (click)=\"Login()\" class=\"btn btn-primary\">Login</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" role=\"tab\" id=\"headingTwo\">\r\n      <h5 class=\"mb-0\">\r\n        <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\r\n          Регистрация\r\n        </a>\r\n      </h5>\r\n    </div>\r\n    <div id=\"collapseTwo\" class=\"collapse\" role=\"tabpanel\" aria-labelledby=\"headingTwo\" data-parent=\"#accordion\">\r\n      <div class=\"card-body\">\r\n        <div *ngIf=\"phaseNum==1; else registrationClosed\">\r\n          <div class=\"form-group\">\r\n              <label>Имя:</label>\r\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"firstname\" placeholder=\"Имя\">\r\n          </div>  \r\n          <div class=\"form-group\">\r\n              <label>Фамилия:</label>\r\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"lastname\" placeholder=\"Фамилия\">\r\n          </div>  \r\n          <div class=\"form-group\">\r\n              <label>Email: </label>\r\n              <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\r\n            </div>  \r\n            <div class=\"form-group\">\r\n                <label>Password:</label>\r\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\r\n            </div>  \r\n            <button (click)=\"Register()\" class=\"btn btn-primary\">Регистрация</button>\r\n        </div>\r\n        </div>\r\n        <ng-template #registrationClosed><div class=\"alert alert-warning\">Регистрация закрыта</div></ng-template>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div *ngIf=\"!authenticated\" id=\"accordion\" role=\"tablist\">\n  <div *ngIf=\"error!=''\" class=\"alert alert-danger\">\n    {{error}}\n  </div>  \n  <div class=\"card\">\n    <div class=\"card-header\" role=\"tab\" id=\"headingOne\">\n      <h5 class=\"mb-0\">\n        <a data-toggle=\"collapse\" href=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\n          Вход\n        </a>\n      </h5>\n    </div>\n\n    <div id=\"collapseOne\" class=\"collapse show\" role=\"tabpanel\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n          <div class=\"form-group\">\n            <label>Email: </label>\n            <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\n          </div>  \n          <div class=\"form-group\">\n              <label>Password:</label>\n              <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\n          </div>  \n          <button (click)=\"Login()\" class=\"btn btn-primary\">Login</button>\n      </div>\n    </div>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-header\" role=\"tab\" id=\"headingTwo\">\n      <h5 class=\"mb-0\">\n        <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\n          Регистрация\n        </a>\n      </h5>\n    </div>\n    <div id=\"collapseTwo\" class=\"collapse\" role=\"tabpanel\" aria-labelledby=\"headingTwo\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n        <div *ngIf=\"phaseNum==1; else registrationClosed\">\n          <div class=\"form-group\">\n              <label>Имя:</label>\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"firstname\" placeholder=\"Имя\">\n          </div>  \n          <div class=\"form-group\">\n              <label>Фамилия:</label>\n              <input type=\"required\" class=\"form-control\" [(ngModel)]=\"lastname\" placeholder=\"Фамилия\">\n          </div>  \n          <div class=\"form-group\">\n              <label>Email: </label>\n              <input type=\"email\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Enter email\">\n            </div>  \n            <div class=\"form-group\">\n                <label>Password:</label>\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Enter password\">\n            </div>  \n            <button (click)=\"Register()\" class=\"btn btn-primary\">Регистрация</button>\n        </div>\n        </div>\n        <ng-template #registrationClosed><div class=\"alert alert-warning\">Регистрация закрыта</div></ng-template>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -265,7 +278,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/santa/santa.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"authenticated\">\r\n  <div *ngIf=\"inLoadingState\" class=\"alert alert-primary\" role=\"alert\">\r\n      Загрузка....\r\n  </div>\r\n  <div *ngIf=\"onError\" class=\"alert alert-danger\">\r\n    {{error}}\r\n  </div>\r\n  <div *ngIf=\"!inLoadingState\" class=\"card\" style=\"width: 40rem;\">\r\n    <h5 class=\"card-header\">Ты секретный Санта для: {{user.santa}}</h5>\r\n    <div class=\"card-body\">\r\n      <h4 class=\"card-title\"></h4>\r\n      <p *ngIf=\"user.isSanta\" class=\"card-text\">\r\n        Ты покупаешь подарок для {{user.santa}} примерно на 1000 руб<br>\r\n        20 декабря подарок подарят наш Санта - Сазонов Иван и снегурка!\r\n      </p>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <button type=\"button\" (click)=\"Logout()\" class=\"btn btn-warning\">Выход</button>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"authenticated\">\n  <div *ngIf=\"inLoadingState\" class=\"alert alert-primary\" role=\"alert\">\n      Загрузка....\n  </div>\n  <div *ngIf=\"onError\" class=\"alert alert-danger\">\n    {{error}}\n  </div>\n  <div *ngIf=\"!inLoadingState\" class=\"card\" style=\"width: 40rem;\">\n    <h5 class=\"card-header\">Ты секретный Санта для: {{user.santa}}</h5>\n    <div class=\"card-body\">\n      <h4 class=\"card-title\"></h4>\n      <p *ngIf=\"user.isSanta\" class=\"card-text\">\n        Ты покупаешь подарок для {{user.santa}} примерно на 1000 руб<br>\n        20 декабря подарок подарят наш Санта - Сазонов Иван и снегурка!\n      </p>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -341,6 +354,107 @@ var SantaComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], SantaComponent);
     return SantaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/songs/songs.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/songs/songs.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"authenticated\">\n  <div *ngIf=\"!inLoadingState\">\n    <div class=\"form-group\">\n      <label for=\"newSongInput\">Что будем петь?</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Название песни\" [(ngModel)]=\"newSong\">\n    </div>\n    <button (click)=\"addSong()\" class=\"btn btn-success\">Добавить</button>\n    <div *ngIf=\"error!=''\" class=\"alert alert-danger\">\n        {{error}}\n    </div>    \n    <table class=\"table table-striped\">\n      <thead>\n        <th scope=\"col\">Исполнитель</th>\n        <th scope=\"col\">Песня</th>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let song of songs\">\n          <td>{{song.performer}}</td>\n          <td>{{song.song}}</td>\n        </tr>\n      </tbody>      \n    </table>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/songs/songs.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SongsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__("../../../../angularfire2/database/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__("../../../../angularfire2/auth/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SongsComponent = (function () {
+    function SongsComponent(afAuth, afDb) {
+        var _this = this;
+        this.afAuth = afAuth;
+        this.afDb = afDb;
+        this.inLoadingState = true;
+        this.authenticated = false;
+        this.error = "";
+        this.newSong = "";
+        afDb.list("/songs").valueChanges().subscribe(function (songslist) { return _this.songs = songslist; });
+    }
+    SongsComponent.prototype.errorHandler = function (error) {
+        this.error = error;
+        console.log(error);
+    };
+    SongsComponent.prototype.ngOnInit = function () {
+        this.inLoadingState = true;
+        this.authenticated = false;
+        this.auser = this.afAuth.authState;
+        var self = this;
+        this.auser.subscribe(function (ruser) {
+            self.authenticated = ruser != null;
+            if (!self.authenticated)
+                return;
+            self.afDb.object("/users/" + ruser.uid).valueChanges().subscribe(function (user) {
+                console.log(user);
+                self.inLoadingState = false;
+                self.user = user;
+            }, function (error) { return self.errorHandler(error); });
+        }, function (error) { return self.errorHandler(error); });
+    };
+    SongsComponent.prototype.addSong = function () {
+        var _this = this;
+        console.log(this.songs);
+        if (this.newSong != "") {
+            if (this.songs.find(function (s) { return s.song == _this.newSong; }) === undefined)
+                this.afDb.list("/songs").push({ performer: this.user.firstname + " " + this.user.lastname, song: this.newSong });
+            else
+                this.error = "\u041F\u0435\u0441\u043D\u044F " + this.newSong + " \u0443\u0436\u0435 \u0437\u0430\u043D\u044F\u0442\u0430";
+        }
+    };
+    SongsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'app-songs',
+            template: __webpack_require__("../../../../../src/app/songs/songs.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/songs/songs.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], SongsComponent);
+    return SongsComponent;
 }());
 
 
